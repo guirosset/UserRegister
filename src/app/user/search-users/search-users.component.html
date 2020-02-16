@@ -1,0 +1,63 @@
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1>Pesquisa de usuários:<small>Visualização</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Formulários</a></li>
+        <li class="active">Elementos gerais</li>
+      </ol>
+    </section>
+  
+    <!-- Main content -->
+    <section class="content">			
+      <div class="box box-default">
+              
+        <div class="box-header with-border">
+          <h3 class="box-title">Select2</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th class="table-col-nome">Nome</th>
+                      <th class="table-col-pseudonimo">Login</th>
+                      <th class="table-col-email">Email</th>
+                      <th class="table-col-celular">Ativo</th>
+                      <th class="table-col-acoes"></th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                    <tr class="d-flex" *ngFor="let usuario of usuarios">
+                      <td class="col-4">{{usuario.nome}}</td>
+                      <td class="col-2">{{usuario.login}}</td>
+                      <td class="col-4">{{usuario.email}}</td>
+                      <td class="col-2">{{usuario.ativo ? 'Ativo' : 'Inátivo'}}</td>
+                      <td class="col-2 text-center">
+                        <button class="btn customBtn" [routerLink]="['/users', usuario.id]">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+
+                        <app-modal-delete (deleteFun)="delete($event)" [id]="usuario.id"></app-modal-delete>
+                      </td>
+                    </tr>
+                    <tr *ngIf="!usuarios">
+                      <td colspan="7">Nenhum objeto encontrado</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </div>
+      <!-- /.box -->
+    </section>
+    <!-- /.content -->
+  </div>
