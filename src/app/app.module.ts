@@ -25,6 +25,8 @@ import { InputRadioComponent } from './shared/input-radio/input-radio.component'
 import { SearchUsersComponent } from './user/search-users/search-users.component';
 import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.component';
 import { HttpErrorInterceptor } from './http-error.interceptor';
+import { RegisterPersonComponent } from './register/register-person/register-person.component';
+import { RegisterPersonService } from './register/register-person.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,7 +44,8 @@ export function tokenGetter() {
     InputContentComponent,
     InputRadioComponent,
     SearchUsersComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    RegisterPersonComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ export function tokenGetter() {
   ],
   providers: [
     GroupService, 
-    UserService, 
+    UserService,
+    RegisterPersonService,
     JwtHelperService, 
     AuthService,
     {
